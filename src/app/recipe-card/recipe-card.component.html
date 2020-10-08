@@ -1,0 +1,11 @@
+<h3>{{ name }}</h3>
+
+<ul>
+    <h4>Ingrédients :</h4>
+    <li *ngFor="let ingredient of ingredients">{{ ingredient.name }}</li>
+</ul>
+
+<ul>
+    <h4>Instructions :</h4>
+    <li *ngFor="let instruction of instructions">{{ instruction }}</li>
+</ul>

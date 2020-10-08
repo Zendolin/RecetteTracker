@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2>Recettes</h2>
+        <div class="list-group">
+            <app-recipe-card 
+                class="list-group-item"
+                *ngFor="let recipe of recipes"
+                [name]="recipe.name"
+                [ingredients]="recipe.ingredients"
+                [instructions]="recipe.instructions"></app-recipe-card>
+        </div>
+    </div>
+</div>
