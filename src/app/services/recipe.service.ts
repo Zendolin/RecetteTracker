@@ -42,4 +42,9 @@ export class RecipeService {
   emitRecipes(){
     this.recipesSubject.next(this.recipes)
   }
+
+  addRecipe(recipe: Recipe){
+    this.recipes.push(recipe)
+    this.emitRecipes()
+  }
 }
