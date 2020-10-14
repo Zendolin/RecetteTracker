@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Recipe } from '../models/recipe.model';
+import { FrenchMeasure, Recipe } from '../models/recipe.model';
 
 @Injectable()
 export class RecipeService {
@@ -9,7 +9,7 @@ export class RecipeService {
     new Recipe(
       "Tarte aux pommes",
       [
-        {name: "Pomme", quantity:2}
+        {name: "Pomme", quantity:2, measure: FrenchMeasure.SANS}
       ],
       [
         "Couper les pommmes"
@@ -18,8 +18,8 @@ export class RecipeService {
     new Recipe(
       "Gâteau nature",
       [
-        {name: "Yaourt", quantity:200},
-        {name: "Sucre", quantity:150}
+        {name: "Yaourt", quantity:200, measure: FrenchMeasure.GRAMME},
+        {name: "Sucre", quantity:150, measure: FrenchMeasure.GRAMME}
         
       ],
       [
@@ -50,6 +50,10 @@ export class RecipeService {
   addRecipe(recipe: Recipe){
     this.recipes.push(recipe)
     this.emitRecipes()
+  }
+
+  getMeasure(){
+    return Object.values(FrenchMeasure)
   }
 
   

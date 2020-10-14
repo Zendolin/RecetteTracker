@@ -58,7 +58,8 @@ export class RecipeFormComponent implements OnInit {
   onAddIngredient(){
     const newIngredientControl = this.formBuilder.group({
       name: ["", Validators.required],
-      quantity: ["", [Validators.required, Validators.pattern("^[0-9]+$"), Validators.min(1)]]
+      quantity: ["", [Validators.required, Validators.pattern("^[0-9]+$"), Validators.min(1)]],
+      measure: [""]
     })
     this.getIngredientsControls().push(newIngredientControl)
   }
@@ -78,5 +79,9 @@ export class RecipeFormComponent implements OnInit {
 
   onRemoveInstruction(index: number){
     this.getInstructionsControls().removeAt(index)
+  }
+
+  onSelectMeasure(){
+    return this.recipeService.getMeasure()
   }
 }

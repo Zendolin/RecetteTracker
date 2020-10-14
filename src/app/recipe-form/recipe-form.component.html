@@ -14,6 +14,13 @@
                         <label for="quantity">Quantité</label>
                         <input type="number" class="form-control" formControlName="quantity">
                     </div>
+                    <div class="form-group col-sm-2">
+                        <label for="measure">Mesure</label>
+                        <select class="form-control" formControlName="measure">
+                            <option *ngFor="let measure of onSelectMeasure()"
+                            [ngValue]="measure">{{ measure }}</option>
+                        </select>
+                    </div>                    
                     <div class="form-group col-sm-6">
                         <label for="name">Nom</label>
                         <input type="text" class="form-control" formControlName="name">    
