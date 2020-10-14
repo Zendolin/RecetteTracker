@@ -4,10 +4,11 @@
         
         <div class="card-deck justify-content-center">
             <app-recipe-card
-            *ngFor="let recipe of recipes"
+            *ngFor="let recipe of recipes; let i = index"
             [name]="recipe.name"
             [ingredients]="recipe.ingredients"
-            [instructions]="recipe.instructions"></app-recipe-card>
+            [instructions]="recipe.instructions"
+            [id]="i"></app-recipe-card>
         </div>
         
         

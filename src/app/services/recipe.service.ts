@@ -39,6 +39,10 @@ export class RecipeService {
     this.emitRecipes()
   }
 
+  getRecipe(index: number): Recipe{
+    return this.recipes[index]
+  }
+
   emitRecipes(){
     this.recipesSubject.next(this.recipes)
   }
@@ -47,4 +51,6 @@ export class RecipeService {
     this.recipes.push(recipe)
     this.emitRecipes()
   }
+
+  
 }

@@ -9,10 +9,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 
 
 const appRoutes: Routes = [
   {path: "add", component: RecipeFormComponent},
+  {path: "recipes/view/:id", component: RecipeDetailComponent},
   {path: "", component: RecipeListComponent},
   {path: "**", redirectTo: ""}  
 ]
@@ -23,7 +25,8 @@ const appRoutes: Routes = [
     RecipeCardComponent,
     RecipeListComponent,
     HeaderComponent,
-    RecipeFormComponent
+    RecipeFormComponent,
+    RecipeDetailComponent
   ],
   imports: [
     BrowserModule,
