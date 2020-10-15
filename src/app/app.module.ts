@@ -10,9 +10,12 @@ import { HeaderComponent } from './header/header.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
+import { SigninComponent } from './signin/signin.component';
+import { AuthService } from './services/auth.service';
 
 
 const appRoutes: Routes = [
+  {path: "auth/signin", component: SigninComponent},
   {path: "add", component: RecipeFormComponent},
   {path: "recipes/view/:id", component: RecipeDetailComponent},
   {path: "", component: RecipeListComponent},
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
     RecipeListComponent,
     HeaderComponent,
     RecipeFormComponent,
-    RecipeDetailComponent
+    RecipeDetailComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +39,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    RecipeService
+    RecipeService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
