@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import firebase from "@firebase/app"
+/* In prod, don't forget to add api_keys */
+import { firebase_config } from "../../api_keys";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'recette-tracker';
+  constructor(){
+    firebase.initializeApp(firebase_config)
+  }
 }

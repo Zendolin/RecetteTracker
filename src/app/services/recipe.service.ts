@@ -1,33 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { FrenchMeasure, Recipe } from '../models/recipe.model';
+import { firebase } from "@firebase/app";
+import "@firebase/database"
 
 @Injectable()
 export class RecipeService {
 
-  recipes: Recipe[] = [
-    new Recipe(
-      "Tarte aux pommes",
-      [
-        {name: "Pomme", quantity:2, measure: FrenchMeasure.SANS}
-      ],
-      [
-        "Couper les pommmes"
-      ]
-    ),
-    new Recipe(
-      "Gâteau nature",
-      [
-        {name: "Yaourt", quantity:200, measure: FrenchMeasure.GRAMME},
-        {name: "Sucre", quantity:150, measure: FrenchMeasure.GRAMME}
-        
-      ],
-      [
-        "Préparer le four",
-        "Mettre dans le four"
-      ]
-    )
-  ]
+  recipes: Recipe[] = []
   recipesSubject = new Subject<Recipe[]>()
 
   constructor() { 
@@ -36,11 +16,27 @@ export class RecipeService {
 
 
   getRecipes(){
-    this.emitRecipes()
+    firebase.database().ref("/recipes")
+      .on("value", (data) => {
+        this.recipes = data.val() ? data.val() : []
+        this.emitRecipes()
+      })
+    
   }
 
-  getRecipe(index: number): Recipe{
-    return this.recipes[index]
+  getRecipe(id: number){
+    return new Promise(
+      (resolve, reject) => {
+        firebase.database().ref("/recipes/" + id).once("value").then(
+          (data) => {
+            resolve(data.val())
+          },
+          (error) => {
+            reject(error)
+          }
+        )
+      }
+    )
   }
 
   emitRecipes(){
@@ -49,7 +45,12 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe){
     this.recipes.push(recipe)
+    this.saveRecipes()
     this.emitRecipes()
+  }
+
+  saveRecipes(){
+    firebase.database().ref("/recipes").set(this.recipes)
   }
 
   getMeasure(){
