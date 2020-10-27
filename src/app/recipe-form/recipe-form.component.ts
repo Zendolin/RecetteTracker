@@ -38,7 +38,7 @@ export class RecipeFormComponent implements OnInit {
       formValue["ingredients"] ? formValue["ingredients"] : [],
       formValue["instructions"] ? formValue["instructions"] : []
     )
-
+    newRecipe.isValidated = false
     this.recipeService.addRecipe(newRecipe)
     this.success = true
 

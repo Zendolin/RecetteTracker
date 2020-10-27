@@ -14,7 +14,7 @@ export class RecipeService {
     this.getRecipes()
   }
 
-
+  /* Valid recipes */
   getRecipes(){
     firebase.database().ref("/recipes")
       .on("value", (data) => {
@@ -49,10 +49,24 @@ export class RecipeService {
     this.emitRecipes()
   }
 
+  updateRecipe(id: number, newRecipe){
+    this.recipes.splice(id, 1, newRecipe)
+    this.saveRecipes()
+    this.emitRecipes()
+  }
+
+  deleteRecipe(id: number){  
+    this.recipes.splice(id, 1)
+    this.saveRecipes()
+    this.emitRecipes()
+  }
+
   saveRecipes(){
     firebase.database().ref("/recipes").set(this.recipes)
   }
 
+
+  /* Other functions */
   getMeasure(){
     return Object.values(FrenchMeasure)
   }

@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-12">
+        <h2>Propositions de recettes</h2>
+
+        <ul>
+            <li *ngFor="let recipe of recipes; let i = index">{{ recipe.name }} | Status :
+                <ng-container *ngIf="recipe.isValidated; else elseblock">
+                    <span class="text-success">Validé</span>
+                </ng-container>
+                <ng-template #elseblock>
+                    <span class="text-danger">Non examiné</span>
+                </ng-template>
+                <button class="btn btn-primary" type="button" (click)="onViewReview(i)">Examiner</button>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -12,12 +12,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { SigninComponent } from './signin/signin.component';
 import { AuthService } from './services/auth.service';
+import { ReviewListComponent } from './review-list/review-list.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { ReviewDetailComponent } from './review-detail/review-detail.component';
 
 
 const appRoutes: Routes = [
   {path: "auth/signin", component: SigninComponent},
   {path: "add", component: RecipeFormComponent},
   {path: "recipes/view/:id", component: RecipeDetailComponent},
+  {path: "review", canActivate: [AuthGuardService], component: ReviewListComponent},
+  {path: "review/:id", canActivate: [AuthGuardService], component: ReviewDetailComponent},
   {path: "", component: RecipeListComponent},
   {path: "**", redirectTo: ""}  
 ]
@@ -30,7 +35,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     RecipeFormComponent,
     RecipeDetailComponent,
-    SigninComponent
+    SigninComponent,
+    ReviewListComponent,
+    ReviewDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +47,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     RecipeService,
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

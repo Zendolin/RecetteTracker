@@ -1,5 +1,6 @@
 export class Recipe{
     public photo: Photo
+    public isValidated: boolean
     
     constructor(public name: string,
                 public ingredients: Ingredient[],

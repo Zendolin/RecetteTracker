@@ -5,23 +5,22 @@ import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../services/recipe.service';
 
 @Component({
-  selector: 'app-recipe-list',
-  templateUrl: './recipe-list.component.html',
-  styleUrls: ['./recipe-list.component.scss']
+  selector: 'app-review-list',
+  templateUrl: './review-list.component.html',
+  styleUrls: ['./review-list.component.scss']
 })
-export class RecipeListComponent implements OnInit {
+export class ReviewListComponent implements OnInit {
 
   recipes: Recipe[]
   recipesSubscription: Subscription
 
-  constructor(private recipesService: RecipeService) { 
-    
-  }
+  constructor(private recipesService: RecipeService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.recipesSubscription = this.recipesService.recipesSubject.subscribe(
       (recipes: Recipe[]) => {
-        this.recipes = recipes.filter(recipe => recipe.isValidated)
+          this.recipes = recipes
       }
     )
     this.recipesService.emitRecipes()
@@ -31,6 +30,8 @@ export class RecipeListComponent implements OnInit {
     this.recipesSubscription.unsubscribe()
   }
 
-
+  onViewReview(id: number){
+    this.router.navigate(["/review", id])
+  }
 
 }
