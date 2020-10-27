@@ -1,5 +1,5 @@
 <div class="col-sm-8 col-sm-offset-2">
-    <h2>Ajouter une recette</h2>
+    <h2>Proposer une recette</h2>
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmitForm()">
         <div class="form-group">
             <label for="name">Nom</label>
@@ -49,8 +49,8 @@
             <button class="btn btn-success" type="button" (click)="onAddInstruction()">Ajouter une instruction</button>
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="recipeForm.invalid">Ajouter</button>
+        <button type="submit" class="btn btn-primary" [disabled]="recipeForm.invalid">Proposer</button>
 
-        <div class="text-success" *ngIf="success">Recette ajoutée ! Vous allez être redirigé vers la page accueil...</div>
+        <div class="text-success" *ngIf="success">Recette proposée à l'administrateur ! Vous allez être redirigé vers la page accueil...</div>
     </form>
 </div>
