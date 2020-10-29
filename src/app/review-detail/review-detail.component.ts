@@ -77,6 +77,7 @@ export class ReviewDetailComponent implements OnInit {
       formValue["instructions"] ? formValue["instructions"] : []
     )
     newRecipe.isValidated = true
+    newRecipe.date = Date.now()
     this.recipeService.updateRecipe(this.id, newRecipe)
     
     setTimeout(

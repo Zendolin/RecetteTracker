@@ -12,6 +12,7 @@ export class RecipeCardComponent implements OnInit {
   @Input() name: string
   @Input() ingredients: Ingredient[]
   @Input() instructions: string[]
+  @Input() date: Date
   @Input() id: number
 
   constructor(private router: Router) { }

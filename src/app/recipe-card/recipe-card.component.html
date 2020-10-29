@@ -2,7 +2,7 @@
     <img class="card-img-top" src="https://via.placeholder.com/300x150" alt="Placeholder Recipe Picture">
     <div class="card-body">
         <h5 class="card-title">{{ name }}</h5>
-        <h6 class="card-subtitle text-muted">Date</h6>
+        <h6 class="card-subtitle text-muted">{{ date | date:"d MMMM yyyy"}}</h6>
         <a class="stretched-link" style="cursor: pointer;" (click)="onViewRecipe(id)"></a>
     </div>
     
