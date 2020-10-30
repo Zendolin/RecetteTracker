@@ -1,14 +1,20 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <span class="navbar-brand ">RecetteTracker</span>
-    <div class="collapse navbar-collapse">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Recettes</a>
-            <a class="nav-item nav-link" routerLink="add" routerLinkActive="active">Proposer une recette</a>
-            <a class="nav-item nav-link" routerLink="review" routerLinkActive="active" *ngIf="isAuth">Examiner les propositions</a>
-        </div>
-        <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" routerLink="auth/signin" routerLinkActive="active" *ngIf="!isAuth">Se connecter</a>
-            <a class="nav-item nav-link" *ngIf="isAuth" (click)="onSignOut()">Déconnexion</a>
+<nav class="navbar navbar-expand-md navbar-light bg-light shadow-sm">
+    <div class="container">
+        <span class="navbar-brand">RecetteTracker</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" routerLink="" routerLinkActive="active">Recettes</a>
+                <a class="nav-item nav-link" routerLink="add" routerLinkActive="active">Proposer une recette</a>
+                <a class="nav-item nav-link" routerLink="review" routerLinkActive="active" *ngIf="isAuth">Examiner les propositions</a>
+            </div>
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link" routerLink="auth/signin" routerLinkActive="active" *ngIf="!isAuth">Se connecter</a>
+                <a class="nav-item nav-link" *ngIf="isAuth" (click)="onSignOut()">Déconnexion</a>
+            </div>
         </div>
     </div>
+    
 </nav>
