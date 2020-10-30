@@ -80,9 +80,10 @@ export class ReviewDetailComponent implements OnInit {
     newRecipe.date = Date.now()
     this.recipeService.updateRecipe(this.id, newRecipe)
     
+    this.isValidated = true
     setTimeout(
       () => {
-          this.isValidated = true
+        this.isValidated = false
           this.router.navigate(['/'])
       }, 2000
     )
@@ -91,10 +92,10 @@ export class ReviewDetailComponent implements OnInit {
 
   onDeleteRecipe(){
     this.recipeService.deleteRecipe(this.id)
-
+    this.isDeleted = true
     setTimeout(
       () => {
-          this.isDeleted = true
+          this.isDeleted = false
           this.router.navigate(['/'])
       }, 2000
     )
