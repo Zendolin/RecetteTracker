@@ -8,7 +8,7 @@
         </div>
         <div class="navbar-nav ml-auto">
             <a class="nav-item nav-link" routerLink="auth/signin" routerLinkActive="active" *ngIf="!isAuth">Se connecter</a>
-            <a class="nav-item nav-link" *ngIf="isAuth" (click)="onSignOut()">Déconnexion</a>
+            <a class="nav-item nav-link" style="cursor: pointer;" *ngIf="isAuth" (click)="onSignOut()">Déconnexion</a>
         </div>
     </div>
 </nav>
