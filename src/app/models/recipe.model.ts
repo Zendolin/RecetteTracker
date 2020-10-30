@@ -1,5 +1,5 @@
 export class Recipe{
-    public photo: Photo
+    public photo: string
     public isValidated: boolean
     public date: number //Timestamp
 

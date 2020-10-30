@@ -1,5 +1,6 @@
-<div class="card mb-3">
-    <img class="card-img-top" src="https://via.placeholder.com/300x150" alt="Placeholder Recipe Picture">
+<div class="card mb-3" *ngIf="isValidated">
+    <img *ngIf="!photo" class="card-img-top" src="https://via.placeholder.com/300x150" alt="Placeholder Recipe Picture">
+    <img *ngIf="photo" class="card-img-top img-fluid" [src]="photo" alt="Placeholder Recipe Picture">
     <div class="card-body">
         <h5 class="card-title">{{ name }}</h5>
         <h6 class="card-subtitle text-muted">{{ date | date:"d MMMM yyyy"}}</h6>

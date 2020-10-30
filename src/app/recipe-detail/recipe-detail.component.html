@@ -1,19 +1,30 @@
-<div class="row">
-    <div class="col">
-        <h3 class="text-center">{{ recipe.name }}</h3>
-        <p>{{ recipe.date | date:"d MMMM yyyy"}}</p>
-        <img class="float-left"src="https://via.placeholder.com/300x150" alt="Placeholder Recipe Picture">
-        <ul>
+<h3 class="text-center">{{ recipe.name }}</h3>
+<span class="text-muted">{{ recipe.date | date:"d MMMM yyyy"}}</span>
+
+<div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">
+    
+    <div class="col-lg-4 col-sm-12 order-lg-1 order-sm-2 order-2">
+        <ul class="list-group list-group-flush ">
             <h4>Ingrédients</h4>
-            <li *ngFor="let ingredient of recipe.ingredients">
+            <li class="list-group-item" *ngFor="let ingredient of recipe.ingredients">
                 {{ ingredient.quantity }} {{ ingredient.measure }} {{ ingredient.name }}
             </li>
         </ul>
-        <ol>
+    </div>
+
+    <div class="col-lg-8 col-sm-12 order-lg-2 order-sm-1 order-1 text-center">
+        <img class="img.responsive" *ngIf="recipe.photo" [src]="recipe.photo">
+        <img class="img.responsive" *ngIf="!recipe.photo" src="https://via.placeholder.com/300x150">
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-8 col-sm-12">
+        <ol class="list-group list-group-flush">
             <h4>Instructions</h4>
-            <li *ngFor="let instruction of recipe.instructions">
+            <li class="list-group-item" *ngFor="let instruction of recipe.instructions">
                 {{instruction}}
             </li>
         </ol>
     </div>
+    
 </div>

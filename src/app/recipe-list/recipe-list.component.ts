@@ -21,7 +21,7 @@ export class RecipeListComponent implements OnInit {
   ngOnInit(): void {
     this.recipesSubscription = this.recipesService.recipesSubject.subscribe(
       (recipes: Recipe[]) => {
-        this.recipes = recipes.filter(recipe => recipe.isValidated)
+        this.recipes = recipes.filter(recipe => recipe)
       }
     )
     this.recipesService.emitRecipes()

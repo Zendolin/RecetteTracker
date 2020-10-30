@@ -78,6 +78,10 @@ export class ReviewDetailComponent implements OnInit {
     )
     newRecipe.isValidated = true
     newRecipe.date = Date.now()
+    if(this.recipe.photo){
+      newRecipe.photo = this.recipe.photo
+    }
+    
     this.recipeService.updateRecipe(this.id, newRecipe)
     
     this.isValidated = true
@@ -91,7 +95,7 @@ export class ReviewDetailComponent implements OnInit {
   }
 
   onDeleteRecipe(){
-    this.recipeService.deleteRecipe(this.id)
+    this.recipeService.deleteRecipe(this.id, this.recipe)
     this.isDeleted = true
     setTimeout(
       () => {

@@ -13,6 +13,8 @@ export class RecipeFormComponent implements OnInit {
 
   recipeForm: FormGroup
   success: boolean = false
+  fileToUpload: File
+  fileUrl: string
 
   constructor(private formBuilder: FormBuilder,
               private recipeService: RecipeService,
@@ -39,7 +41,22 @@ export class RecipeFormComponent implements OnInit {
       formValue["instructions"] ? formValue["instructions"] : []
     )
     newRecipe.isValidated = false
-    this.recipeService.addRecipe(newRecipe)
+    
+    if(this.fileToUpload){
+      this.recipeService.uploadFile(this.fileToUpload).then(
+        (url: string) => {
+          newRecipe.photo = url
+        }
+      ).then(
+        () => {
+          this.recipeService.addRecipe(newRecipe)
+        }
+      )
+    }
+    else{
+      this.recipeService.addRecipe(newRecipe)
+    }
+
     this.success = true
 
     setTimeout(
@@ -83,5 +100,9 @@ export class RecipeFormComponent implements OnInit {
 
   onSelectMeasure(){
     return this.recipeService.getMeasure()
+  }
+
+  detectFiles(event){
+    this.fileToUpload = event.target.files[0]
   }
 }

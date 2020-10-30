@@ -1,58 +1,66 @@
-<div class="col-sm-8 col-sm-offset-2">
-    <h2>Examination de la recette</h2>
-    <form *ngIf="reviewForm" [formGroup]="reviewForm">
-        <div class="form-group">
-            <label for="name">Nom</label>
-            <input type="text" id="name" class="form-control" formControlName="name">
-        </div>
-        <div formArrayName="ingredients">
-            <h4>Ingrédients</h4>
-            <div  *ngFor="let ingredientControl of getIngredientsControls().controls, let i = index">
-                <div [formGroupName]="i" class="form-row align-items-end">
-                    <div class="form-group col-sm-2">
-                        <label for="quantity">Quantité</label>
-                        <input type="number" class="form-control" formControlName="quantity">
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <label for="measure">Mesure</label>
-                        <select class="form-control" formControlName="measure">
-                            <option *ngFor="let measure of onSelectMeasure()"
-                            [ngValue]="measure">{{ measure }}</option>
-                        </select>
-                    </div>                    
-                    <div class="form-group col-sm-6">
-                        <label for="name">Nom</label>
-                        <input type="text" class="form-control" formControlName="name">    
-                    </div>
-                    <div class="form-group col-sm-2">
-                        <button class="btn btn-danger" type="button" (click)="onRemoveIngredient(i)">Supprimer</button>
-                    </div>
-                </div>
-
-                
+<div class="row justify-content-lg-center justify-content-md-center justify-content-sm-center">    
+    <div class="col-lg-10">
+        <h2>Examination de la recette</h2>
+        <form *ngIf="reviewForm" [formGroup]="reviewForm">
+            <img class="img-fluid" *ngIf="recipe.photo" [src]="recipe.photo">
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input type="text" id="name" class="form-control" formControlName="name">
             </div>
-            <button class="btn btn-success" type="button" (click)="onAddIngredient()">Ajouter un ingrédients</button>
-        </div>
+            <div formArrayName="ingredients">
+                <h4>Ingrédients <button class="btn btn-success" type="button" (click)="onAddIngredient()">Ajouter un ingrédients</button></h4>
+                <div  *ngFor="let ingredientControl of getIngredientsControls().controls, let i = index">
+                    <div [formGroupName]="i" class="form-row align-items-end">
+                        <div class="form-group col-sm-2">
+                            <label for="quantity">Quantité</label>
+                            <input type="number" class="form-control" formControlName="quantity">
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <label for="measure">Mesure</label>
+                            <select class="form-control" formControlName="measure">
+                                <option *ngFor="let measure of onSelectMeasure()"
+                                [ngValue]="measure">{{ measure }}</option>
+                            </select>
+                        </div>                    
+                        <div class="form-group col-sm-6">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" formControlName="name">    
+                        </div>
+                        <div class="form-group col-sm-2">
+                            <button class="btn btn-danger" type="button" (click)="onRemoveIngredient(i)">Supprimer</button>
+                        </div>
+                    </div>
 
-        <div formArrayName="instructions">
-            <h4>Instructions</h4>
-            <div class="form-row" *ngFor="let instructionControl of getInstructionsControls().controls, let i = index">
-                <div class="form-group col-sm-10">
-                    <input type="text" class="form-control" [formControlName]="i">
-                </div>
-                <div class="form-group col-sm-2">
-                    <button class="btn btn-danger" type="button" (click)="onRemoveInstruction(i)">Supprimer</button>
+                    
                 </div>
                 
             </div>
-            <button class="btn btn-success" type="button" (click)="onAddInstruction()">Ajouter une instruction</button>
-        </div>
-    
-        <button class="btn btn-success" type="button" (click)="onValidateRecipe()">Valider cette recette</button>
-        <button class="btn btn-danger" type="button" (click)="onDeleteRecipe()">Supprimer cette recette</button>
 
-        <p *ngIf="isValidated" class="text-success">Recette validée ! Vous allez être redirigé vers la page d'accueil...</p>
-        <p *ngIf="isDeleted" class="text-danger">Recette supprimé ! Vous allez être redirigé vers la page d'accueil...</p>
-        <p></p>
-    </form>
+            <div formArrayName="instructions">
+                <h4>Instructions <button class="btn btn-success" type="button" (click)="onAddInstruction()">Ajouter une instruction</button></h4>
+                <div class="form-row" *ngFor="let instructionControl of getInstructionsControls().controls, let i = index">
+                    <div class="form-group col-sm-10">
+                        <input type="text" class="form-control" [formControlName]="i">
+                    </div>
+                    <div class="form-group col-sm-2">
+                        <button class="btn btn-danger" type="button" (click)="onRemoveInstruction(i)">Supprimer</button>
+                    </div>
+                    
+                </div>
+                
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-success" type="button" (click)="onValidateRecipe()">Valider cette recette</button>
+                <button class="btn btn-danger" type="button" (click)="onDeleteRecipe()">Supprimer cette recette</button>
+            </div>
+                
+            
+            
+
+            <p *ngIf="isValidated" class="text-success">Recette validée ! Vous allez être redirigé vers la page d'accueil...</p>
+            <p *ngIf="isDeleted" class="text-danger">Recette supprimé ! Vous allez être redirigé vers la page d'accueil...</p>
+            <p></p>
+        </form>
+    </div>
 </div>
