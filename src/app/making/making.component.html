@@ -1,0 +1,14 @@
+
+<ng-template appMakeit
+            (canNext)="isEnabled"></ng-template>
+
+
+<div class="row">
+    <div class="col">
+        <div class='btn-toolbar mt-2 justify-content-center'>
+            <button class="btn btn-primary mr-2" type="button" *ngIf="currentStep > 0" (click)="onMove('previous')">Retour</button>
+            <button class="btn btn-primary" type="button" *ngIf="currentStep < steps.length - 1" (click)="onMove('next')" [disabled]="!isEnabled">Ensuite</button>
+        </div>        
+    </div>
+</div>
+

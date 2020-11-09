@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../models/recipe.model';
 import { RecipeService } from '../services/recipe.service';
 
@@ -11,18 +11,24 @@ import { RecipeService } from '../services/recipe.service';
 export class RecipeDetailComponent implements OnInit {
 
   recipe: Recipe
+  id: number
 
   constructor(private recipeService: RecipeService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.recipe = new Recipe("", [], [])
-    const id = this.route.snapshot.params["id"]
-    this.recipeService.getRecipe(+id).then(
+    this.id = this.route.snapshot.params["id"]
+    this.recipeService.getRecipe(+this.id).then(
       (recipe: Recipe) => {
         this.recipe = recipe
       }
     )
+  }
+
+  onMakeIt(){
+    this.router.navigate(["/makeit", this.id])
   }
 
 }

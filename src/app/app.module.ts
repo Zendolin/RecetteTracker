@@ -15,6 +15,12 @@ import { AuthService } from './services/auth.service';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { ReviewDetailComponent } from './review-detail/review-detail.component';
+import { StepIngredientComponent } from './step-ingredient/step-ingredient.component';
+import { StepInstructionComponent } from './step-instruction/step-instruction.component';
+import { StepFinalComponent } from './step-final/step-final.component';
+import { MakingComponent } from './making/making.component';
+import { MakeitDirective } from './directives/makeit.directive';
+
 
 
 const appRoutes: Routes = [
@@ -23,6 +29,7 @@ const appRoutes: Routes = [
   {path: "recipes/view/:id", component: RecipeDetailComponent},
   {path: "review", canActivate: [AuthGuardService], component: ReviewListComponent},
   {path: "review/:id", canActivate: [AuthGuardService], component: ReviewDetailComponent},
+  {path: "makeit/:id", component: MakingComponent},
   {path: "", component: RecipeListComponent},
   {path: "**", redirectTo: ""}  
 ]
@@ -37,7 +44,12 @@ const appRoutes: Routes = [
     RecipeDetailComponent,
     SigninComponent,
     ReviewListComponent,
-    ReviewDetailComponent
+    ReviewDetailComponent,
+    StepIngredientComponent,
+    StepInstructionComponent,
+    StepFinalComponent,
+    MakingComponent,
+    MakeitDirective
   ],
   imports: [
     BrowserModule,

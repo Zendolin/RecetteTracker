@@ -1,0 +1,14 @@
+<div class="row justify-content-center">
+    <div class="col-lg-8 text-center">
+        <h4>Avez-vous tout les ingrédients ?</h4>
+
+        <div class="btn-group-toggle mb-2" *ngFor="let ingredient of data.ingredients; let i = index" data-toggle="buttons">
+            <label class="btn btn-light" [for]="'check-ingre-' + i">
+                <input type="checkbox" [id]="'check-ingre-' + i" (change)="onCheck($event)">{{ ingredient.quantity }}{{ ingredient.measure }} {{ ingredient.name }}
+            </label>
+        </div>
+        
+        <p class="text-danger" *ngIf="count < data.ingredients.length">Vous avez {{ count }} ingrédient<span *ngIf="count > 0">s</span> sur {{ data.ingredients.length }}.</p>
+        <p class="text-success" *ngIf="count == data.ingredients.length">Vous avez tout les ingrédients !</p>
+    </div>
+</div>
