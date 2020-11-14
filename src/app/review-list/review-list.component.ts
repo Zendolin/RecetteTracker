@@ -31,7 +31,7 @@ export class ReviewListComponent implements OnInit {
   }
 
   onViewReview(id: number){
-    this.router.navigate(["/review", id])
+    this.router.navigate(["/reviews", id])
   }
 
 }

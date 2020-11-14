@@ -27,8 +27,8 @@ const appRoutes: Routes = [
   {path: "auth/signin", component: SigninComponent},
   {path: "add", component: RecipeFormComponent},
   {path: "recipes/view/:id", component: RecipeDetailComponent},
-  {path: "review", canActivate: [AuthGuardService], component: ReviewListComponent},
-  {path: "review/:id", canActivate: [AuthGuardService], component: ReviewDetailComponent},
+  {path: "reviews", canActivate: [AuthGuardService], component: ReviewListComponent},
+  {path: "reviews/:id", canActivate: [AuthGuardService], component: ReviewDetailComponent},
   {path: "makeit/:id", component: MakingComponent},
   {path: "", component: RecipeListComponent},
   {path: "**", redirectTo: ""}  
