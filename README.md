@@ -1,28 +1,39 @@
-**PROJET ACCESSIBLE SUR Zendolin.github.io**
-# RecetteTracker
+<h1 align="center">Recette Tracker</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.3.
+## Table of Contents
+* [Introduction](#introduction)
+* [Features](#features)
+* [How to Use](#how-to-use)
+* [Build With](#build-with)
 
-## Development server
+## Introduction
+RecetteTracker is a simple website to track all recipes in catalog.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Features
+With RecetteTracker, you can :
+* See all recipes
+* Read recipe in detail
+* Make a recipe step by step
+* Suggest a recipe
 
-## Code scaffolding
+For administrator, he/she can :
+* See all sugest recipes
+* Approve or Remove a suggest recipe
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How to Use
+After cloning the repository :
 
-## Build
+`npm install`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Then open the local server for development :
 
-## Running unit tests
+`ng serve --open`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+And for production build :
+ `ng build --prod`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Build With
+* Angular : 10.1.3
+* jQuery : 3.5.1
+* Bootstrap : 4.5.2
+* FontAwesome : 5.15.1
